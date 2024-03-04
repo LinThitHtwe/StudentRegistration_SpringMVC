@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<context:component-scan base-package="student.controller" />
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/JSP/" />
+<property name="suffix" value=".jsp" /> </bean>
+
+<bean id="accountDAO" class="student.dao.AccountDAO"> </bean>
+<bean id="courseDAO" class="student.dao.CourseDAO"> </bean>
+<bean id="studentAccountDAO" class="student.dao.StudentAccountDAO"> </bean>
+<bean id="studentCourseDAO" class="student.dao.StudentCourseDAO"> </bean>
+<bean id="studentDAO" class="student.dao.StudentDAO"> </bean>
+<bean id="studentTableDAO" class="student.dao.StudentTableDAO"> </bean>
+<bean id="dashBoardDAO" class="student.dao.DashBoardDAO"> </bean>
+
+<mvc:resources mapping="/CSS/**" location="/WEB-INF/CSS/" />
+
+<mvc:annotation-driven />
+ 
+
+<bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- max file size in bytes -->
+    <property name="maxUploadSize" value="2000000" />
+</bean>
+
+</beans>
